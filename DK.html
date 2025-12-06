@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dhineshkumar V | Portfolio</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-soft: #0f172a;
+      --card: #020617;
+      --accent: #2563eb;
+      --accent-soft: rgba(37,99,235,0.15);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --shadow-soft: 0 18px 40px rgba(15,23,42,0.65);
+      --shadow-subtle: 0 10px 30px rgba(15,23,42,0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top left, #1d4ed8 0, #020617 45%, #000 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    /* Layout */
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 22px 20px 60px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(to bottom, rgba(2,6,23,0.86), rgba(15,23,42,0.6));
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.18);
+      box-shadow: 0 18px 40px rgba(15,23,42,0.75);
+      margin-bottom: 28px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 22px;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-circle {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 25% 0, #60a5fa, #1d4ed8, #020617);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 18px;
+      color: #e5e7eb;
+      box-shadow: 0 10px 25px rgba(37,99,235,0.6);
+    }
+
+    .nav-name {
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: .04em;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--muted);
+      margin-left: 18px;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(to right, #38bdf8, #6366f1, #a855f7);
+      transition: width .3s ease;
+      border-radius: 999px;
+    }
+
+    .nav-links a:hover {
+      color: #e5e7eb;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.8fr) minmax(0, 1.2fr);
+      gap: 26px;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 800px) {
+      header {
+        border-radius: 18px;
+      }
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .hero-right {
+        order: -1;
+      }
+    }
+
+    .hero-left {
+      padding: 26px 24px;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(148,163,184,0.35);
+      background: radial-gradient(circle at top left, rgba(56,189,248,0.06) 0, rgba(15,23,42,0.9) 38%, rgba(2,6,23,0.98) 100%);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-left::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at -20% -40%, rgba(59,130,246,0.4), transparent 55%);
+      opacity: .8;
+      pointer-events: none;
+    }
+
+    .tagline {
+      font-size: 12px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .name {
+      font-size: clamp(32px, 4vw, 40px);
+      font-weight: 700;
+      letter-spacing: .04em;
+      margin-bottom: 4px;
+    }
+
+    .role {
+      font-weight: 500;
+      font-size: 16px;
+      color: #93c5fd;
+      margin-bottom: 16px;
+    }
+
+    .summary {
+      font-size: 14px;
+      color: #cbd5f5;
+      max-width: 560px;
+    }
+
+    .summary span {
+      color: #38bdf8;
+      font-weight: 500;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      font-size: 13px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: all .25s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #38bdf8, #6366f1, #a855f7);
+      color: white;
+      box-shadow: 0 12px 30px rgba(79,70,229,0.6);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px) scale(1.01);
+      box-shadow: 0 16px 40px rgba(79,70,229,0.9);
+    }
+
+    .btn-ghost {
+      background: rgba(15,23,42,0.85);
+      border-color: rgba(148,163,184,0.4);
+      color: #e5e7eb;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15,23,42,1);
+      border-color: rgba(129,140,248,0.8);
+      box-shadow: 0 10px 26px rgba(15,23,42,0.8);
+    }
+
+    .hero-footer {
+      margin-top: 24px;
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(148,163,184,0.35);
+      color: #e5e7eb;
+    }
+
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .contact-card,
+    .quick-card {
+      padding: 18px 18px 16px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(to bottom right, rgba(15,23,42,0.98), rgba(15,23,42,0.96));
+      border: 1px solid rgba(148,163,184,0.35);
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .section-title-sm {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    .contact-row span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .contact-link {
+      font-weight: 500;
+      color: #bfdbfe;
+      word-break: break-all;
+    }
+
+    .socials {
+      display: flex;
+      gap: 10px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+
+    .social-badge {
+      font-size: 11px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.95);
+      border: 1px solid rgba(148,163,184,0.4);
+      color: #e5e7eb;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: all .25s ease;
+    }
+
+    .social-badge span {
+      font-size: 13px;
+    }
+
+    .social-badge:hover {
+      border-color: #60a5fa;
+      box-shadow: 0 10px 26px rgba(15,23,42,0.9);
+      transform: translateY(-1px);
+    }
+
+    .quick-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .quick-list strong {
+      display: block;
+      font-size: 12px;
+      color: #e5e7eb;
+      margin-bottom: 2px;
+    }
+
+    /* Sections */
+
+    section {
+      margin-top: 30px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .section-heading h2 {
+      font-size: 18px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .section-heading span {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .18em;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    @media (max-width: 800px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: radial-gradient(circle at top left, rgba(56,189,248,0.06), rgba(15,23,42,0.98));
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(148,163,184,0.32);
+      padding: 16px 17px 14px;
+      box-shadow: var(--shadow-subtle);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 120% -10%, rgba(168,85,247,0.12), transparent 55%);
+      opacity: .8;
+      pointer-events: none;
+    }
+
+    .card-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .card-sub {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .badge {
+      font-size: 10px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(148,163,184,0.35);
+      color: #e5e7eb;
+    }
+
+    .card-list {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #cbd5f5;
+    }
+
+    .card-list li {
+      margin-bottom: 4px;
+      list-style: none;
+      position: relative;
+      padding-left: 14px;
+    }
+
+    .card-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 7px;
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: linear-gradient(to right, #38bdf8, #6366f1);
+    }
+
+    /* Skills */
+
+    .skill-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .chip {
+      font-size: 11px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.95);
+      border: 1px solid rgba(148,163,184,0.45);
+      color: #e5e7eb;
+    }
+
+    .chip span {
+      font-size: 10px;
+      color: #93c5fd;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      margin-right: 4px;
+    }
+
+    /* Footer */
+
+    footer {
+      margin-top: 40px;
+      font-size: 11px;
+      color: var(--muted);
+      text-align: center;
+      padding-top: 10px;
+      border-top: 1px solid rgba(15,23,42,0.9);
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- NAVBAR -->
+    <header>
+      <div class="nav">
+        <div class="nav-left">
+          <div class="logo-circle">D</div>
+          <div>
+            <div class="nav-name">Dhineshkumar V</div>
+            <div style="font-size:11px;color:#9ca3af;">Full-Stack & Cloud Enthusiast</div>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="#about">About</a>
+          <a href="#experience">Education</a>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <main>
+      <section class="hero" id="about">
+        <div class="hero-left">
+          <div class="tagline">Software Engineering • Cloud • Problem Solving</div>
+          <div class="name">Hi, I'm Dhineshkumar.</div>
+          <div class="role">Aspiring Full-Stack Developer & AWS Cloud Enthusiast</div>
+          <p class="summary">
+            I enjoy building <span>simple, scalable</span> systems with clean code.
+            With experience in Java, Golang, web development and AWS, I’m passionate
+            about solving real-world problems and collaborating with teams to deliver
+            impactful software solutions.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#" class="btn-primary">Download Résumé ⬇</a>
+            <a href="mailto:dhineshkumar.ece27@gmail.com" class="btn-ghost">Contact Me ✉</a>
+          </div>
+
+          <div class="hero-footer">
+            <div class="pill">Open to Internships & Entry-Level Roles</div>
+            <div style="font-size:11px;">Based in Coimbatore, India </div>
+          </div>
+        </div>
+
+        <aside class="hero-right">
+          <div class="contact-card">
+            <div class="section-title-sm">Contact</div>
+
+            <div class="contact-row">
+              <span>Phone</span>
+              <div class="contact-link">+91 95246 77702</div>
+            </div>
+            <div class="contact-row">
+              <span>Email</span>
+              <a class="contact-link" href="mailto:dhineshkumar.ece27@gmail.com">
+                dhineshkumar.ece27@gmail.com
+              </a>
+            </div>
+
+            <div class="socials">
+              <a class="social-badge" href="https://linkedin.com/in/dhineshkumar--v" target="_blank">
+                <span>in</span> LinkedIn
+              </a>
+              <a class="social-badge" href="https://github.com/dhineshprvt" target="_blank">
+                <span>&lt;/&gt;</span> GitHub
+              </a>
+              <a class="social-badge" href="https://leetcode.com/dhinesh_1434_k" target="_blank">
+                <span>σ</span> LeetCode
+              </a>
+            </div>
+          </div>
+
+          <div class="quick-card">
+            <div class="section-title-sm">Snapshot</div>
+            <div class="quick-list">
+              <div>
+                <strong>Current Degree</strong>
+                B.E – ECE, Karpagam Institute of Technology (2023–2027)
+              </div>
+              <div>
+                <strong>Cloud</strong>
+                AWS (EC2, S3, IAM, Serverless Basics)
+              </div>
+              <div>
+                <strong>Coding</strong>
+                Java • Python • C • Go • HTML/CSS/JS
+              </div>
+              <div>
+                <strong>Strengths</strong>
+                Problem Solving • Teamwork • Adaptability
+              </div>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <!-- EDUCATION & CERTIFICATIONS -->
+      <section id="experience">
+        <div class="section-heading">
+          <h2>Education & Certifications</h2>
+          <span>learning journey</span>
+        </div>
+
+        <div class="grid">
+          <!-- Education Card -->
+          <article class="card">
+            <div class="card-title">B.E – Electronics and Communication Engineering</div>
+            <div class="card-sub">
+              Karpagam Institute of Technology, Coimbatore • 2023 – 2027
+            </div>
+            <div style="margin-top:6px;">
+              <span class="badge">CGPA: 7.14 (upto 4th sem)</span>
+            </div>
+            <ul class="card-list" style="margin-top:10px;">
+              <li>Core foundation in electronics, communication systems, and digital design.</li>
+              <li>Exploring the intersection of embedded systems with software engineering.</li>
+            </ul>
+          </article>
+
+          <!-- Certifications Card -->
+          <article class="card">
+            <div class="card-title">Key Certifications</div>
+            <div class="card-sub">Cloud • Programming • Problem Solving</div>
+            <ul class="card-list">
+              <li>AWS Academy Cloud Foundations – AWS Academy Graduate.</li>
+              <li>AWS Cloud Practitioner Essentials – AWS Skill Builder.</li>
+              <li>Mastering AWS Serverless: Hands-On with Core AWS Services – Udemy.</li>
+              <li>Problem Solving badges on HackerEarth & practice on CodeChef.</li>
+              <li>NASSCOM Certificate of Skill Competency.</li>
+              <li>Basics of C Programming & Data Structures – KIT.</li>
+              <li>NPTEL – System Design through Verilog.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects">
+        <div class="section-heading">
+          <h2>Selected Project</h2>
+          <span>what i've built</span>
+        </div>
+
+        <article class="card">
+          <div class="card-title">To-Do List Web Application</div>
+          <div class="card-sub">
+            HTML • CSS • JavaScript • Local Storage
+          </div>
+          <div style="margin-top:6px;">
+            <span class="badge">Front-End</span>
+            <span class="badge">Personal Project</span>
+          </div>
+          <ul class="card-list">
+            <li>Designed a clean, responsive interface for creating, completing, and deleting tasks.</li>
+            <li>Used browser local storage to persist tasks, ensuring data remains after page reloads.</li>
+            <li>Added interactive UI feedback and smooth state updates for a better user experience.</li>
+            <li>Organized codebase with reusable components and clear separation of concerns.</li>
+          </ul>
+        </article>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills">
+        <div class="section-heading">
+          <h2>Skills</h2>
+          <span>tech & soft skills</span>
+        </div>
+
+        <div class="grid">
+          <!-- Technical -->
+          <article class="card">
+            <div class="card-title">Technical Skills</div>
+            <div class="card-sub">Languages • Cloud • Tools</div>
+            <div class="skill-chips">
+              <div class="chip"><span>Lang</span>Java</div>
+              <div class="chip"><span>Lang</span>Python</div>
+              <div class="chip"><span>Lang</span>C</div>
+              <div class="chip"><span>Lang</span>Golang</div>
+              <div class="chip"><span>Web</span>HTML</div>
+              <div class="chip"><span>Web</span>CSS</div>
+              <div class="chip"><span>Cloud</span>AWS EC2</div>
+              <div class="chip"><span>Cloud</span>AWS S3</div>
+              <div class="chip"><span>Cloud</span>AWS IAM</div>
+              <div class="chip"><span>Tool</span>VS Code</div>
+              <div class="chip"><span>Tool</span>IntelliJ</div>
+              <div class="chip"><span>Tool</span>Git</div>
+              <div class="chip"><span>Tool</span>Excel</div>
+            </div>
+          </article>
+
+          <!-- Soft -->
+          <article class="card">
+            <div class="card-title">Soft Skills</div>
+            <div class="card-sub">How I work with teams</div>
+            <ul class="card-list">
+              <li><strong>Teamwork:</strong> Comfortable working in diverse teams and sharing ownership.</li>
+              <li><strong>Problem Solving:</strong> Approach challenges analytically with a focus on clarity.</li>
+              <li><strong>Critical Thinking:</strong> Evaluate trade-offs before choosing solutions.</li>
+              <li><strong>Adaptability:</strong> Quick to learn new tools, languages, and technologies.</li>
+              <li><strong>Time Management:</strong> Balance academic commitments with self-driven learning.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="year"></span> Dhineshkumar V • Portfolio
+    </footer>
+  </div>
+
+  <script>
+    // Set current year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
